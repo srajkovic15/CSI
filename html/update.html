@@ -2,25 +2,119 @@
 	<!-- SimpleRegistration.html -->
 	<html>
 	  <head>
-	    <title>Simple Update </title>
+	    <title>Simple Update</title>
+		<link href="/styles.css" rel="stylesheet" />
+<!-- Paste this between the HEAD tags of your html document -->
+
+<script language="JavaScript">
+
+	var isIE4 = false;
+	function CheckBrowser() 
+	{ if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.charAt(0) >= 4) { isIE4 = true; }}
+	function mOvr(src,clrOver)
+	{ if (!src.contains(event.fromElement)) { src.style.cursor = 'hand'; src.bgColor = clrOver; src.children.tags('A')[0].style.color = '#ffffff';}}
+	function mOut(src,clrIn) 
+	{ if (!src.contains(event.toElement)) { src.style.cursor = 'default'; src.bgColor = clrIn;  src.children.tags('A')[0].style.color = '#ffffff';}}
+	function mClk(src) 
+	{ if(event.srcElement.tagName=='TD'){src.children.tags('A')[0].click();} }
+	function mOvrTop(src,clrOver)
+	{ if (!src.contains(event.fromElement)) { src.style.cursor = 'hand'; src.bgColor = clrOver;}}
+	function mOutTop(src,clrIn) 
+	{ if (!src.contains(event.toElement)) { src.style.cursor = 'default'; src.bgColor = clrIn;}}
+</script>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+  
+<center> 
+
+<TABLE BORDER="5">
+
+
+<TR>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+ <b>
+ <a style="color: white" href="homes"><font face="Tahoma" size="3">Homes</font></a></b></td>
+ 
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+ <b>
+ <a style="color: white" href="Selecthome.html"><font face="Tahoma" size="3">Select A Home</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="AddNewHome.html"><font face="Tahoma" size="3">Add A Home</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="AddPerson.html"><font face="Tahoma" size="3">Add A Person</font></a></b>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="AddAgent.html"><font face="Tahoma" size="3">Add An Agent</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+ <b>
+
+<a style="color: white" href="DeleteHome.html"><font face="Tahoma" size="3">Delete A Home</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+
+<b>
+<a style="color: white" href="homesForSale.html"><font face="Tahoma" size="3">Homes For Sale</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="Price.html"><font face="Tahoma" size="3">Below A Price</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="updateOwner.html"><font face="Tahoma" size="3">Update An Owner</font></a>
+</b>
+</td>
+<td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+	<b>
+	<a style="color: white" href="../index.html"><font face="Tahoma" size="3">Landing Page</font></a>
+	</b>
+  </td>
+</tr>
+</table>
+</center>
 	  </head>
-	  <body>
-	  <center>
-	    Please enter last name to be updated in the database
+	  <body bgcolor="#ededed">
+		<Body Text="#000000">
+			&nbsp;<p align="center"><font color="black""><b>
+			<font face="Arial" size="4">&nbsp;</font><font face="Bernard MT Condensed" size="5">Simple Update
+			 </font></b></font></p>
+			<center> 
+			
+		Please enter the last name to be updated in the database, and their new first name below.
+		<p><font color = "#FF0000">* required fields</font></p>
 
 	    <form method = "post" action = "/CSI/SimpleUpdate">
-	      <p>Last Name <font color = "#FF0000">*</font>
-	         <input type = "text" name = "lastName">&nbsp;
-	         <p>New First Name <font color = "#FF0000">*</font>
-	         <input type = "text" name = "firstName">&nbsp;
+			<table>
+				<tr>
+				   <td>
+					  <input type = "text" name = "lastName" placeholder="Last Name *">&nbsp;
+				   </td>
+				 </tr>
+				 <tr>
+					<td>
+					   <input type = "text" name = "firstName" placeholder="First Name *">&nbsp;
+					</td>
+				  </tr>
+				</table>
 
-	      </p>
-	      <p><input type = "submit" name = "Submit" value = "Submit">
-	         <input type = "reset" value = "Reset">
-	      </p>
+
+				<table>
+					<tr>
+					   <td>
+						   <input type = "submit" name = "Submit" value = "Submit">
+					   </td>
+					   <td>
+						  <input type = "reset" value = "Reset">
+					   </td>
+				   </tr>
+				 </table>
 	    </form>
-	    <p><font color = "#FF0000">* required fields</font></p>
-		
 		</center>
 	  </body>
 </html>

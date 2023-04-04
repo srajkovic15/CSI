@@ -2,8 +2,85 @@
 	<html>
 	  <head>
 	    <title>Adding a Home</title>
+		<link href="/styles.css" rel="stylesheet" />
+
+		<link rel="File-List" href="indx_files/filelist.xml">
+<!-- Paste this between the HEAD tags of your html document -->
+
+<script language="JavaScript">
+
+	var isIE4 = false;
+	function CheckBrowser() 
+	{ if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.charAt(0) >= 4) { isIE4 = true; }}
+	function mOvr(src,clrOver)
+	{ if (!src.contains(event.fromElement)) { src.style.cursor = 'hand'; src.bgColor = clrOver; src.children.tags('A')[0].style.color = '#ffffff';}}
+	function mOut(src,clrIn) 
+	{ if (!src.contains(event.toElement)) { src.style.cursor = 'default'; src.bgColor = clrIn;  src.children.tags('A')[0].style.color = '#ffffff';}}
+	function mClk(src) 
+	{ if(event.srcElement.tagName=='TD'){src.children.tags('A')[0].click();} }
+	function mOvrTop(src,clrOver)
+	{ if (!src.contains(event.fromElement)) { src.style.cursor = 'hand'; src.bgColor = clrOver;}}
+	function mOutTop(src,clrIn) 
+	{ if (!src.contains(event.toElement)) { src.style.cursor = 'default'; src.bgColor = clrIn;}}
+</script>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+  
+<center> 
+
+<TABLE BORDER="5">
+
+
+<TR>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+ <b>
+ <a style="color: white" href="homes"><font face="Tahoma" size="3">Homes</font></a></b></td>
+ 
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+ <b>
+ <a style="color: white" href="Selecthome.html"><font face="Tahoma" size="3">Select A Home</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="AddNewHome.html"><font face="Tahoma" size="3">Add A Home</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="AddPerson.html"><font face="Tahoma" size="3">Add A Person</font></a></b>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="AddAgent.html"><font face="Tahoma" size="3">Add An Agent</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+ <b>
+
+<a style="color: white" href="DeleteHome.html"><font face="Tahoma" size="3">Delete A Home</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+
+<b>
+<a style="color: white" href="homesForSale.html"><font face="Tahoma" size="3">Homes For Sale</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="Price.html"><font face="Tahoma" size="3">Below A Price</font></a></b></td>
+ <td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+<b>
+<a style="color: white" href="updateOwner.html"><font face="Tahoma" size="3">Update An Owner</font></a>
+</b>
+</td>
+<td align="center" width="105" onmouseover="mOvr(this,'#9999cc');" onmouseout="mOut(this,'#666699');" onclick="mClk(this);" bgcolor="#996633">
+	<b>
+	<a style="color: white" href="../index.html"><font face="Tahoma" size="3">Landing Page</font></a>
+	</b>
+  </td>
+</tr>
+</table>
+</center>
 	  </head>
-	  <body bgcolor="white">
+	  <body bgcolor="#ededed">
 
 
 	  <Body Text="#000000">
@@ -12,94 +89,59 @@
          </font></b></font></p>
 		<center> 
 		
-		Please enter home id and address.
+		Enter a Home ID and Address below to add your new home to our database!
+		<p><font color = "red">Note: * required fields</font></p>
 
 	    <form method = "post" action = "/CSI/AddNewHome">
 		<p> 
 		
 		<table>
 		  <tr>
-		     <td>
-		         <font color="#cdad00">Home ID <font color = "#cdad00">*</font>
-			 </td>
 			 <td>
-	            <input type = "text" name = "HOMEID">&nbsp; (Can be any number of digits)
+	            <input type = "number" name = "HOMEID" placeholder="HOME ID *">&nbsp;
 			 </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Address</font><font color="#cdad00">*</font>
-			  </td>
 			  <td>
-                  <font color="#FF0000"><span style="background-color: #000000">
-	              <input type = "text" name = "ADDRESS" size="25"></span></font>&nbsp; 
+	              <input type = "text" name = "ADDRESS" placeholder="ADDRESS *" size="25"></span></font>&nbsp; 
 			   </td>
 			   <tr>
-		      <td>
-			      <font color="#cdad00">Floor Space</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "FLOORSPACE" size="25"></span></font>&nbsp; (Please enter in sq.ft)
+	              <input type = "number" name = "FLOORSPACE" placeholder="FLOOR SPACE (IN SQ.FT)"size="25" min="0"></span></font>&nbsp;
 			   </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Floors</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "FLOORS" size="25"></span></font>&nbsp; 
+	              <input type = "number" name = "FLOORS" placeholder="FLOORS"size="25" min="0"></span></font>&nbsp; 
 			   </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Bedrooms</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "BEDROOMS" size="25"></span></font>&nbsp; 
+	              <input type = "number" name = "BEDROOMS" placeholder="BEDROOMS" size="25" min="0"></span></font>&nbsp; 
 			   </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Full Bathrooms</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "FULLBATHROOMS" size="25"></span></font>&nbsp; 
+	              <input type = "number" name = "FULLBATHROOMS" placeholder="FULL BATHROOMS" size="25" min="0"></span></font>&nbsp; 
 			   </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Half Bathrooms</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "HALFBATHROOMS" size="25"></span></font>&nbsp; 
+	              <input type = "number" name = "HALFBATHROOMS" placeholder="HALF BATHROOMS" size="25" min="0"></span></font>&nbsp; 
 			   </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Land Size</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "LANDSIZE" size="25"></span></font>&nbsp; (Please enter in acres)
+	              <input type = "number" name = "LANDSIZE" placeholder="LAND SIZE (IN ACRES)" size="25" min="0"></span></font>&nbsp;
 			   </td>
 		   </tr>
 		   <tr>
-		      <td>
-			      <font color="#cdad00">Year Constructed</font><font color="#cdad00">
-			  </td>
 			  <td>
-                  <font color="#cdad00"><span style="background-color: #cdad00">
-	              <input type = "text" name = "YEARCONSTRUCTED" size="25"></span></font>&nbsp; (Ex. 1950)
+	              <input type = "number" name = "YEARCONSTRUCTED" placeholder="YEAR CONSTRUCTED" size="25" min="0"></span></font>&nbsp;
 			   </td>
 		   </tr>
 		   </tr>
 		 </table>
-	    <br><br>
 		  <table>
 		     <tr>
 			    <td>
@@ -112,7 +154,6 @@
 		  </table>
 	      </p>
 	    </form>
-	    <p><font color = "#cdad00">Note: * required fields</font></p>
 		
 		</center>
 		
