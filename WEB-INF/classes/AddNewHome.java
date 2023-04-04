@@ -1,100 +1,92 @@
-//
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.sql.*;
-public class AddNewHome extends HttpServlet 
-{
-  private PreparedStatement pstmt;
-  public void init() throws ServletException {
-    initializeJdbc();
-  }
-  public void doPost(HttpServletRequest request, HttpServletResponse
-      response) throws ServletException, IOException  
- {
-	response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
 
-    String HOMEID = request.getParameter("HOMEID");
-    String ADDRESS = request.getParameter("ADDRESS");
-    String FLOORSPACE = request.getParameter("FLOORSPACE");
-    String FLOORS = request.getParameter("FLOORS");
-    String BEDROOMS= request.getParameter("BEDROOMS");
-    String FULLBATHROOMS = request.getParameter("FULLBATHROOMS");
-    String HALFBATHROOMS = request.getParameter("HALFBATHROOMS");
-    String LANDSIZE = request.getParameter("LANDSIZE");
-    String YEARCONSTRUCTED = request.getParameter("YEARCONSTRUCTED");
+public class AddNewHome extends HttpServlet {
 
-    try 
-	{
-      if (HOMEID.length() == 0 || ADDRESS.length() == 0) {
-        out.println("Please: Home ID and Address are required");
-        return; 
-    }
-    storeHome(HOMEID, ADDRESS, FLOORSPACE, FLOORS, BEDROOMS,
-	FULLBATHROOMS, HALFBATHROOMS, LANDSIZE, YEARCONSTRUCTED);
-	out.println("<html><head><title>Homes Registeration Report</title>");	 
-	out.print( "<br /><b><center><font color=\"RED\"><H2>Homes Registeration Report</H2></font>");
-    out.println( "</center><br />" );
-	/*
-	out.println("</head><body>");
-	out.println("<center><table border=\"1\">"); 
-	out.println("<tr BGCOLOR=\"#cccccc\">");
-    out.println("<td align = \"justify\"><font face =\"times new roman\"  size=\"4pt\">HOME ID</td>");
-    out.println("<td align = \"justify\"><font face =\"times new roman\"  size=\"4pt\">ADDRESS</td>");
-    out.println("</tr>");
-	*/
-	out.println("</table></center>");
-		
-    out.println(HOMEID + " " + ADDRESS +
-        " is now added to the Homes table");
-	out.println("</body></html>");
-    }
-    catch(Exception ex) 
-	{
-      out.println("\n Error: " + ex.getMessage());
-    }
-    finally 
-	{
-      out.close(); 
-    }
- } 
-  private void initializeJdbc() 
-  {
-    try 
-	{
-        String driver = "oracle.jdbc.driver.OracleDriver";  
-        Class.forName(driver);
-		// database URL is the unique identifier of the database on the Internet
-		// thin is the oracle server
-		String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
-		String user = "CSIPROJECT";
-		String password = "mohammed";  
-		Connection conn = DriverManager.getConnection(url,user, password);  
-		pstmt = conn.prepareStatement("insert into homes " +
-        "(HOMEID, ADDRESS, FLOORSPACE, FLOORS, BEDROOMS, FULLBATHROOMS, HALFBATHROOMS, "
-         + "LANDSIZE, YEARCONSTRUCTED) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    }
-    catch (Exception ex) 
-	{
-      ex.printStackTrace();
-    }
-  }
+    private PreparedStatement pstmt;
 
-  
-  private void storeHome(String HOMEID, String ADDRESS,
-      String FLOORSPACE, String FLOORS, String BEDROOMS, String FULLBATHROOMS,
-      String HALFBATHROOMS, String LANDSIZE, String YEARCONSTRUCTED) throws SQLException 
- {
-    pstmt.setString(1, HOMEID);
-    pstmt.setString(2,ADDRESS);
-    pstmt.setString(3, FLOORSPACE);
-    pstmt.setString(4, FLOORS);
-    pstmt.setString(5, BEDROOMS);
-    pstmt.setString(6, FULLBATHROOMS);
-    pstmt.setString(7, HALFBATHROOMS);
-    pstmt.setString(8, LANDSIZE);
-    pstmt.setString(9, YEARCONSTRUCTED);
-    pstmt.executeUpdate();
- }
+    public void init() throws ServletException {
+        initializeJdbc();
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String floor_space = request.getParameter("floor_space");
+        String floors = request.getParameter("floors");
+        String bedrooms = request.getParameter("bedrooms");
+        String bathrooms = request.getParameter("bathrooms");
+        String landsize = request.getParameter("landsize");
+        String year_constructed = request.getParameter("year_constructed");
+        String category = request.getParameter("category");
+        String homePrice = request.getParameter("homePrice");
+        String selltime = request.getParameter("selltime");
+        String agentId = request.getParameter("agentId");
+        String ssn = request.getParameter("ssn");
+
+        try {
+            if (floor_space.length() == 0 || floors.length() == 0 || bedrooms.length() == 0 ||
+                    bathrooms.length() == 0 || landsize.length() == 0 || year_constructed.length() == 0 ||
+                    category.length() == 0 || homePrice.length() == 0 || selltime.length() == 0 ||
+                    agentId.length() == 0 || ssn.length() == 0) {
+                out.println("Please fill all the fields");
+                return;
+            }
+
+            storeHome(floor_space, floors, bedrooms, bathrooms, landsize, year_constructed, category, homePrice, selltime, agentId, ssn);
+
+            out.println("<html><head><title>Homes Registration Report</title>");
+            out.print("<br /><b><center><font color=\"RED\"><H2>Homes Registration Report</H2></font>");
+            out.println("</center><br />");
+
+            out.println("</table></center>");
+
+            out.println("Home details are added successfully");
+            out.println("</body></html>");
+        }
+        catch(Exception ex) {
+            out.println("\n Error: " + ex.getMessage());
+        }
+        finally {
+            out.close();
+        }
+    }
+
+    private void initializeJdbc() {
+        try {
+            String driver = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driver);
+            String url = "jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+            String user = "CSIPROJECT";
+            String password = "mohammed";
+            Connection conn = DriverManager.getConnection(url,user, password);
+            pstmt = conn.prepareStatement("INSERT INTO HOMES " +
+                    "(FLOOR_SPACE, FLOORS, BEDROOMS, BATHROOMS, LANDSIZE, YEAR_CONSTRUCTED, CATEGORY, HOME_PRICE, " +
+                    "SELL_TIME, AGENT_ID, SSN) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void storeHome(String floor_space, String floors, String bedrooms,
+                           String bathrooms, String landsize, String year_constructed,
+                           String category, String homePrice, String selltime, String agentId, String ssn) throws SQLException {
+        pstmt.setString(1, floor_space);
+        pstmt.setString(2, floors);
+        pstmt.setString(3, bedrooms);
+        pstmt.setString(4, bathrooms);
+        pstmt.setString(5, landsize);
+        pstmt.setString(6, year_constructed);
+        pstmt.setString(7, category);
+        pstmt.setString(8, homePrice);
+        pstmt.setString(9, selltime);
+        pstmt.setString(10, agentId);
+        pstmt.setString(11, ssn);
+        }
 }
